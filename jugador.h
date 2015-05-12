@@ -1,9 +1,9 @@
 #ifndef _JUGADOR_H
 #define _JUGADOR_H
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 #include "mapa.h"
 
@@ -15,9 +15,10 @@
 
 typedef direc tJugador;
 
+
 direc verJugador(tJugador jugador);
 
-bool moverJugador(char moviento,tJugador jugador);
+bool moverJugador(char moviento, tJugador jugador);
 
 tJugador crearJugador(void);
 

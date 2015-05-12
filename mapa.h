@@ -1,9 +1,9 @@
 #ifndef _MAPA_H
 #define _MAPA_H
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 #include "mensaje.h"
 
@@ -25,7 +25,6 @@
 #define C 25
 
 
-
 typedef struct dirMapa *direc;
 typedef char elemento;
 typedef struct tipoMapa *tMapa;
@@ -37,13 +36,13 @@ direc crearDir(void);
 
 tMapa cambiarDificultad(tMapa mapa, int dificultad);
 
-tMapa dibujarMapa(tMapa mapa,direc dir,elemento dibujo,bool limpiar);
+tMapa dibujarMapa(tMapa mapa, direc dir, elemento dibujo, bool limpiar);
 
-tMapa randomMapa(tMapa mapa,elemento dibujo);
+tMapa randomMapa(tMapa mapa, elemento dibujo);
 
-void imprimirMapa(tMapa mapa,tMensaje mensaje);
+void imprimirMapa(tMapa mapa, tMensaje mensaje);
 
-elemento verMapa(tMapa mapa,direc dir);
+elemento verMapa(tMapa mapa, direc dir);
 
 bool dirValida(direc dir);
 

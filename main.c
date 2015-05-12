@@ -1,13 +1,13 @@
-#include <stdio.h>
 #include <stdbool.h>
+#include <stdio.h>
 #include <time.h>
 
 #include "conio.h"
 #include "jugador.h"
 #include "mapa.h"
+#include "mensaje.h"
 #include "puntos.h"
 #include "tabla.h"
-#include "mensaje.h"
 
 #define STIME 12
 #define LTIME 208

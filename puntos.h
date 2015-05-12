@@ -1,18 +1,19 @@
 #ifndef _PUNTOS_H
 #define _PUNTOS_H
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 #include "mapa.h"
 
 
 typedef struct tipoPuntos *tPuntos;
 
-tPuntos crearPuntos (void);
 
-tPuntos srPuntos(tPuntos puntos,elemento dibujo);
+tPuntos crearPuntos(void);
+
+tPuntos srPuntos(tPuntos puntos, elemento dibujo);
 
 int verPuntoMax(tPuntos puntos);
 
