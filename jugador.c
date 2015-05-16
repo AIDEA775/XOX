@@ -8,7 +8,7 @@
 tJugador crearJugador(void){
     tJugador jugador=NULL;
     jugador=crearDir();
-    jugador=dirCero(jugador);
+    dirCero(jugador);
     return jugador;
 }
 
@@ -21,16 +21,16 @@ direc verJugador(tJugador jugador){
 bool moverJugador(char moviento,tJugador jugador){
     switch (moviento){
         case ARR:
-            jugador=arrDir(jugador);
+            arrDir(jugador);
             break;
         case ABA:
-            jugador=abaDir(jugador);
+            abaDir(jugador);
             break;
         case IZQ:
-            jugador=izqDir(jugador);
+            izqDir(jugador);
             break;
         case DER:
-            jugador=derDir(jugador);
+            derDir(jugador);
             break;
     }
     return(dirValida(jugador));

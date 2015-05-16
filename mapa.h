@@ -26,18 +26,18 @@ direc crearDir(void);
  * por ahora no se necesita destruir esto porque se destruye junto con 'jugador'
  */
 
-tMapa cambiarDificultad(tMapa mapa, int dificultad);
+void cambiarDificultad(tMapa mapa, int dificultad);
 /*
  * asigna un nivel de dificultad al mapa a partir de un entero
  */
 
-tMapa dibujarMapa(tMapa mapa, direc dir, elemento dibujo, bool limpiar);
+void dibujarMapa(tMapa mapa, direc dir, elemento dibujo, bool limpiar);
 /*
  * dibuja en el 'mapa' en la direccion de 'dir' el elemento 'dibujo' si 'limpiar' es 'false'
  * dibuja 'LIMPIADOR' si 'limpiar' es 'true'
  */
 
-tMapa randomMapa(tMapa mapa, elemento dibujo);
+void randomMapa(tMapa mapa, elemento dibujo);
 /*
  * dibuja en el mapa el elemento 'dibujo' en una posicion al azar
  */
@@ -57,29 +57,60 @@ bool dirValida(direc dir);
  * devuelve si la direccion 'dir' esta dentro o no del mapa
  */
 
-direc dirCero(direc dir);
+direc copiarDir(direc dir);
 /*
- * asigna en la direccion 'dir' la direccion inicial y la devuelve
+ * copia una direccion
+ * destruir esto cuando ya no se use
  */
 
-direc arrDir(direc dir);
+void dirCero(direc dir);
 /*
- * asigna en la direccion 'dir' la direccion de la posicion de arriba y la devuelve
+ * asigna en la direccion 'dir' la direccion inicial
  */
 
-direc abaDir(direc dir);
+void arrDir(direc dir);
 /*
- * asigna en la direccion 'dir' la direccion de la posicion de abajo y la devuelve
+ * asigna en la direccion 'dir' la direccion de la posicion de arriba
  */
 
-direc izqDir(direc dir);
+void abaDir(direc dir);
 /*
- * asigna en la direccion 'dir' la direccion de la posicion de la izquierda y la devuelve
+ * asigna en la direccion 'dir' la direccion de la posicion de abajo
  */
 
-direc derDir(direc dir);
+void izqDir(direc dir);
 /*
- * asigna en la direccion 'dir' la direccion de la posicion de la derecha y la devuelve
+ * asigna en la direccion 'dir' la direccion de la posicion de la izquierda
+ */
+
+void derDir(direc dir);
+/*
+ * asigna en la direccion 'dir' la direccion de la posicion de la derecha
+ */
+
+ void arrDirFinal(direc dir);
+/*
+ * asigna en la direccion 'dir' la direccion de la posicion tope de arriba
+ */
+
+void abaDirFinal(direc dir);
+/*
+ * asigna en la direccion 'dir' la direccion de la posicion tope hacia abajo
+ */
+
+void izqDirFinal(direc dir);
+/*
+ * asigna en la direccion 'dir' la direccion de la posicion tope a la izquierda
+ */
+
+void derDirFinal(direc dir);
+/*
+ * asigna en la direccion 'dir' la direccion de la posicion tope a la derecha
+ */
+
+direc destruirDir(direc dir);
+/*
+ * destruye la direccion y la asigna a NULL
  */
 
 tMapa destruirMapa(tMapa mapa);

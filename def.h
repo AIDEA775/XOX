@@ -13,7 +13,7 @@
 #define MUCH '0'      /*Layout de lo que suma doble*/
 #define REST 'X'      /*Layout de lo que resta puntos*/
 
-#define RAND "\033[1;"
+#define RAND "\033[1;"  /* un numero (rand()%6)+31 seguido de la letra "m" */
 #define RED "\033[1;31m"
 #define GREEN "\033[1;32m"
 #define YELLOW "\033[1;33m"

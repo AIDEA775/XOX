@@ -33,16 +33,15 @@ tMapa crearMapa(void) {
     /*primer elemento inicial*/
     mapa->a[F/2][C-2] = SUMA;
 
-    /* solo para testear
-     *mapa->a[F/2-1][C/2] = MUCH;*/
+    /* solo para testear*/
+    mapa->a[F/2-1][C/2] = MUCH;
 
     return mapa;
 }
 
 
-tMapa cambiarDificultad(tMapa mapa, int dificultad) {
+void cambiarDificultad(tMapa mapa, int dificultad) {
     mapa->dificultad = dificultad;
-    return mapa;
 }
 
 
@@ -53,20 +52,22 @@ direc crearDir(void) {
 }
 
 
-tMapa dibujarMapa(tMapa mapa, direc dir, elemento dibujo, bool limpiar) {
-    if (limpiar) {
-        mapa->a[dir->fila][dir->columna] = LIMP;
-    } else {
-        mapa->a[dir->fila][dir->columna] = dibujo;
+void dibujarMapa(tMapa mapa, direc dir, elemento dibujo, bool limpiar) {
+    if (dirValida(dir)) {
+        if (limpiar) {
+            mapa->a[dir->fila][dir->columna] = LIMP;
+        } else {
+            mapa->a[dir->fila][dir->columna] = dibujo;
+        }
     }
-    return mapa;
 }
 
 
-tMapa randomMapa(tMapa mapa, elemento dibujo) {
+void randomMapa(tMapa mapa, elemento dibujo) {
     mapa->a[rand()%F][rand()%C] = dibujo;
-    return mapa;
 }
+
+
 void doblarMapa(int dificultad) {
     int doblar;
     if (dificultad == 1) {
@@ -78,6 +79,7 @@ void doblarMapa(int dificultad) {
         printf(" ");
     }
 }
+
 
 void imprimirMapa(tMapa mapa, tMensaje mensaje) {
     int colorMensaje = (rand()%6)+31;
@@ -106,7 +108,7 @@ void imprimirMapa(tMapa mapa, tMensaje mensaje) {
                     printf ("%s%c%s", CYAN, mapa->a[fila][columna], RED);
                     break;
                 case MUCH:
-                    printf ("%s%c%s", GREEN, mapa->a[fila][columna], RED);
+                    printf ("%s%dm%c%s", RAND, (rand()%6)+31, mapa->a[fila][columna], RED);
                     break;
                 case LIMP:
                     printf ("%s%c%s", RED, mapa->a[fila][columna], RED);
@@ -137,42 +139,65 @@ elemento verMapa(tMapa mapa, direc dir) {
     return (mapa->a[dir->fila][dir->columna]);
 }
 
+direc copiarDir(direc dir){
+    direc cpDir = crearDir();
+    cpDir->fila = dir->fila;
+    cpDir->columna = dir->columna;
+    return cpDir;
+}
 
 bool dirValida(direc dir) {
     return (0 <= dir->fila && dir->fila < F && 0 <= dir->columna && dir->columna < C);
 }
 
 
-direc dirCero(direc dir) {
+void dirCero(direc dir) {
     dir->fila = F/2;
     dir->columna = 1;
-    return dir;
 }
 
 
-direc arrDir(direc dir) {
+void arrDir(direc dir) {
     dir->fila--;
-    return dir;
 }
 
 
-direc abaDir(direc dir) {
+void abaDir(direc dir) {
     dir->fila++;
-    return dir;
 }
 
 
-direc izqDir(direc dir) {
+void izqDir(direc dir) {
     dir->columna--;
-    return dir;
 }
 
 
-direc derDir(direc dir) {
+void derDir(direc dir) {
     dir->columna++;
-    return dir;
 }
 
+
+void arrDirFinal(direc dir){
+    dir->fila = 0;
+}
+
+void abaDirFinal(direc dir){
+    dir->fila = F-1;
+}
+
+void izqDirFinal(direc dir){
+    dir->columna = 0;
+}
+
+void derDirFinal(direc dir){
+    dir->columna = C-1;
+}
+
+direc destruirDir(direc dir){
+    free(dir);
+    dir = NULL;
+    return dir;
+}
 
 tMapa destruirMapa(tMapa mapa) {
     free(mapa);

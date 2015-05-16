@@ -17,9 +17,9 @@ tPuntos crearPuntos(void);
  * destruirlo cuando termine la partida
  */
 
-tPuntos srPuntos(tPuntos puntos, elemento dibujo);
+void srPuntos(tPuntos puntos, tMapa mapa, direc jugador);
 /*
- * suma o resta puntos dependiendo del elemento 'dbujo'
+ * suma o resta puntos dependiendo de la direccion 'jugador' en el mapa
  * ademas actualiza el 'puntoMax'
  */
 

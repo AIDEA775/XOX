@@ -70,13 +70,13 @@ int main (void) {
         } while (movimiento != 'f' && movimiento != 'd' && movimiento != 'i');
         switch (movimiento) {
             case 'f':
-                mapa = cambiarDificultad(mapa, 1);
+                cambiarDificultad(mapa, 1);
                 break;
             case 'd':
-                mapa = cambiarDificultad(mapa, 2);
+                cambiarDificultad(mapa, 2);
                 break;
             case 'i':
-                mapa = cambiarDificultad(mapa, 3);
+                cambiarDificultad(mapa, 3);
                 break;
         }
 
@@ -89,7 +89,7 @@ int main (void) {
         do {
             encabezado();
             printf ("\t  Puntos: %d        Mov: %d\n", verPuntos(puntos), tiempo);
-            mensaje = actualizarMensaje(mensaje, esLimpiador(puntos), verPuntos(puntos));
+            actualizarMensaje(mensaje, esLimpiador(puntos), verPuntos(puntos));
             imprimirMapa(mapa, mensaje);
 
             movimiento = getch();
@@ -101,11 +101,11 @@ int main (void) {
                     case IZQ:
                     case DER:
                     case ARR:
-                        mapa = dibujarMapa(mapa, verJugador(jugador), VACIO, false);
+                        dibujarMapa(mapa, verJugador(jugador), VACIO, false);
                         refrescar = moverJugador(movimiento, jugador);
                         if (refrescar) {
-                            srPuntos(puntos, verMapa(mapa, verJugador(jugador)));
-                            mapa = dibujarMapa(mapa, verJugador(jugador), ESTRELLA, esLimpiador(puntos));
+                            srPuntos(puntos, mapa, verJugador(jugador));
+                            dibujarMapa(mapa, verJugador(jugador), ESTRELLA, esLimpiador(puntos));
                         }
                         break;
                 }
@@ -115,12 +115,12 @@ int main (void) {
             }
 
             /*gestion de tiempo*/
-            mapa = randomMapa(mapa, REST);
+            randomMapa(mapa, REST);
             if (tiempo%(STIME) == 0) {
-                mapa = randomMapa(mapa, SUMA);
+                randomMapa(mapa, SUMA);
             }
             if (tiempo%(LTIME) == 0) {
-                mapa = randomMapa(mapa, MUCH);
+                randomMapa(mapa, MUCH);
             }
             tiempo++;
 
