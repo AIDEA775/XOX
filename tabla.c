@@ -5,12 +5,6 @@
 #include "conio.h"
 #include "tabla.h"
 
-#define RAND "\033[1;"
-#define RED "\033[1;31m"
-#define GREEN "\033[1;32m"
-#define YELLOW "\033[1;33m"
-#define CYAN "\033[1;36m"
-#define WHITE "\033[1;37m"
 
 /*imprimir titulo del juego*/
 void encabezado (void) {

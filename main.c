@@ -3,14 +3,13 @@
 #include <time.h>
 
 #include "conio.h"
+#include "def.h"
 #include "jugador.h"
 #include "mapa.h"
 #include "mensaje.h"
 #include "puntos.h"
 #include "tabla.h"
 
-#define STIME 12
-#define LTIME 208
 
 int main (void) {
     tMapa mapa;
@@ -20,8 +19,8 @@ int main (void) {
     tTabla tabla;
     char reintentar;
     char movimiento;
-    int tiempo;
     bool refrescar;
+    int tiempo;
 
     /*necesario para el rand, semilla en cero*/
     srand(time(NULL));
@@ -89,13 +88,13 @@ int main (void) {
 
         do {
             encabezado();
-            printf ("\t  Puntos: %d     Tiempo: %d\n", verPuntos(puntos), tiempo);
+            printf ("\t  Puntos: %d        Mov: %d\n", verPuntos(puntos), tiempo);
             mensaje = actualizarMensaje(mensaje, esLimpiador(puntos), verPuntos(puntos));
             imprimirMapa(mapa, mensaje);
 
             movimiento = getch();
             if (movimiento == 27){
-                movimiento = getch();
+                getch();
                 movimiento = getch();
                 switch (movimiento) {
                     case ABA:

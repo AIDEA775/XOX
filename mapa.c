@@ -4,7 +4,6 @@
 
 #include "mapa.h"
 
-#define ESC "\033["
 
 struct dirMapa {
     int fila;
@@ -34,7 +33,8 @@ tMapa crearMapa(void) {
     /*primer elemento inicial*/
     mapa->a[F/2][C-2] = SUMA;
 
-    /*mapa->a[F/2-1][C/2]=MUCH;*/
+    /* solo para testear
+     *mapa->a[F/2-1][C/2] = MUCH;*/
 
     return mapa;
 }
@@ -54,7 +54,7 @@ direc crearDir(void) {
 
 
 tMapa dibujarMapa(tMapa mapa, direc dir, elemento dibujo, bool limpiar) {
-    if (dibujo == ESTRELLA && limpiar) {
+    if (limpiar) {
         mapa->a[dir->fila][dir->columna] = LIMP;
     } else {
         mapa->a[dir->fila][dir->columna] = dibujo;
@@ -75,7 +75,7 @@ void doblarMapa(int dificultad) {
         doblar = rand()%dificultad+1;
     }
     for (int i = 0; i < doblar; i++){
-        printf(' ');
+        printf(" ");
     }
 }
 

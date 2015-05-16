@@ -5,12 +5,14 @@
 #include "mapa.h"
 #include "puntos.h"
 
+
 struct tipoPuntos {
 	int puntoActual;
 	int puntoMax;
     bool limpiar;
     int limpiarTiempo;
 };
+
 
 tPuntos crearPuntos (void) {
 	tPuntos puntos = NULL;
