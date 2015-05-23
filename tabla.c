@@ -103,16 +103,16 @@ tTabla abrirTabla(void) {
         rewind(tabla);
 
         /*escribir tabla inicial*/
-        fprintf(tabla, "%s", "Steve....500"
-                             "Tony.....400"
-                             "Bruce....300"
-                             "Nick.....200"
-                             "Logan....100"
-                             "Peter.....75"
-                             "Natasha...50"
-                             "Clint.....40"
-                             "Pietro....30"
-                             "Wanda.....15");
+        fprintf(tabla, "%s", "Steve....999"
+                             "Tony.....750"
+                             "Bruce....500"
+                             "Nick.....300"
+                             "Logan....200"
+                             "Peter....100"
+                             "Natasha...75"
+                             "Clint.....50"
+                             "Pietro....40"
+                             "Wanda.....30");
     }
     return tabla;
 }
