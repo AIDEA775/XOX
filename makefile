@@ -3,21 +3,21 @@ FLAGS = -g -Wall -Wextra -Werror -pedantic -std=c99
 OBJETOS = main.o jugador.o mapa.o puntos.o tabla.o mensaje.o conio.o
 
 xox2 : $(OBJETOS)
-	gcc $(FLAGS) -o XOX2 $(OBJETOS)
+	gcc $(FLAGS) -o XOX2 $(OBJETOS) 
 
-main.o : main.c jugador.h mapa.h puntos.h tabla.h mensaje.h
+main.o : main.c jugador.h mapa.h puntos.h tabla.h mensaje.h def.h
 	gcc $(FLAGS) -c main.c
 
 jugador.o : jugador.c jugador.h mapa.h
 	gcc $(FLAGS) -c jugador.c
 
-mapa.o : mapa.c mapa.h mensaje.h
+mapa.o : mapa.c mapa.h mensaje.h def.h
 	gcc $(FLAGS) -c mapa.c
 
-puntos.o : puntos.c puntos.h mapa.h
+puntos.o : puntos.c puntos.h mapa.h def.h
 	gcc $(FLAGS) -c puntos.c
 
-tabla.o : tabla.c tabla.h
+tabla.o : tabla.c tabla.h def.h
 	gcc $(FLAGS) -c tabla.c
 
 mensaje.o : mensaje.c mensaje.h

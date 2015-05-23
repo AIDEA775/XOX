@@ -24,7 +24,7 @@
 #define F 25
 #define C 25
 
-#define STIME 12
-#define LTIME 208
+#define STIME 7
+#define LTIME 23
 
 #endif

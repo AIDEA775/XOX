@@ -22,8 +22,8 @@ tMapa crearMapa (void);
 
 direc crearDir(void);
 /*
- * crea una direccion que apunta a un lugar en el mapa
- * por ahora no se necesita destruir esto porque se destruye junto con 'jugador'
+ * crea una direccion que apunta a la coordenada (0,0) en el mapa
+ * destruir esto
  */
 
 void cambiarDificultad(tMapa mapa, int dificultad);

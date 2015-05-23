@@ -38,7 +38,7 @@ void srPuntos(tPuntos puntos, tMapa mapa, direc jugador) {
                 break;
             case MUCH:
                 puntos->puntoActual += 10;
-                puntos->limpiar = rand()%5+1;
+                puntos->limpiar = 7; /*rand()%5+1;*/
                 switch (puntos->limpiar) {
                     case 1:
                         puntos->limpiarTiempo = C;
@@ -112,6 +112,37 @@ void srPuntos(tPuntos puntos, tMapa mapa, direc jugador) {
                                 dibujarMapa(mapa, dir, VACIO, false);
                                 derDir(dir);
                             }
+                            abaDir(dir);
+                        }
+                        dir = destruirDir(dir);
+                        break;
+
+                    case 6:
+                        puntos->limpiar = 0;
+                        dir = crearDir();
+                        for (int i = 0; i < C/2; i++) {
+                            while(dirValida(dir)){
+                                dibujarMapa(mapa, dir, VACIO, false);
+                                abaDir(dir);
+                            }
+                            arrDirFinal(dir);
+                            derDir(dir);
+                            derDir(dir);
+                        }
+                        dir = destruirDir(dir);
+                        break;
+
+                    case 7:
+                        puntos->limpiar = 0;
+                        dir = crearDir();
+                        for (int i = 0; i < F/2; i++) {
+                            while(dirValida(dir)){
+                                dibujarMapa(mapa, dir, VACIO, false);
+                                derDir(dir);
+                                derDir(dir);
+                            }
+                            izqDirFinal(dir);
+                            abaDir(dir);
                             abaDir(dir);
                         }
                         dir = destruirDir(dir);

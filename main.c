@@ -56,19 +56,64 @@ int main (void) {
         puntos = crearPuntos();
         mensaje = crearMensaje();
         tiempo = 1;
+        reintentar = 'f';
         refrescar = true;
 
         encabezado();
         printf ("\n\n\n\t"
                 "       A que dificultad\n\t"
                 "        Quieres jugar?\n\n\t"
-                "         f := Facil\n\n\t"
-                "         d := Dificil\n\n\t"
-                "         i := Imposible ");
+                "          [*] Facil    \n\n\t"
+                "          [ ] Dificil  \n\n\t"
+                "          [ ] Imposible");
         do {
+        movimiento = getch();
+        if (movimiento == 27) {
+            getch();
             movimiento = getch();
-        } while (movimiento != 'f' && movimiento != 'd' && movimiento != 'i');
-        switch (movimiento) {
+            switch (movimiento) {
+                case ARR:
+                    switch (reintentar) {
+                        case 'd':
+                            printf (ESC"4A"ESC"23D"ESC"0J");
+                            printf ("          [*] Facil    \n\n\t"
+                                    "          [ ] Dificil  \n\n\t"
+                                    "          [ ] Imposible");
+                            reintentar = 'f';
+                            break;
+                        case 'i':
+                            printf (ESC"4A"ESC"23D"ESC"0J");
+                            printf ("          [ ] Facil    \n\n\t"
+                                    "          [*] Dificil  \n\n\t"
+                                    "          [ ] Imposible");
+                            reintentar = 'd';
+                            break;
+                    }
+                    break;
+                case ABA:
+                    switch (reintentar) {
+                        case 'f':
+                            printf (ESC"4A"ESC"23D"ESC"0J");
+                            printf ("          [ ] Facil    \n\n\t"
+                                    "          [*] Dificil  \n\n\t"
+                                    "          [ ] Imposible");
+                            reintentar = 'd';
+                            break;
+                        case 'd':
+                            printf (ESC"4A"ESC"23D"ESC"0J");
+                            printf ("          [ ] Facil    \n\n\t"
+                                    "          [ ] Dificil  \n\n\t"
+                                    "          [*] Imposible");
+                            reintentar = 'i';
+                            break;
+                    }
+                    break;
+                }
+            }
+        }
+        while (movimiento != 10);
+
+        switch (reintentar) {
             case 'f':
                 cambiarDificultad(mapa, 1);
                 break;
@@ -114,7 +159,11 @@ int main (void) {
                 refrescar = false;                
             }
 
-            /*gestion de tiempo*/
+            /*gestion de elementos*/
+            randomMapa(mapa, REST);
+            randomMapa(mapa, REST);
+            randomMapa(mapa, REST);
+            randomMapa(mapa, REST);
             randomMapa(mapa, REST);
             if (tiempo%(STIME) == 0) {
                 randomMapa(mapa, SUMA);
@@ -138,12 +187,12 @@ int main (void) {
         printf ("\n\n\t"
                 "      Gracias por jugar!\n\n\n\t"
                 "     Quieres Reprobarme?\n\n\n\t"
-                "        Presiona S! ");
+                "       Presiona Enter! ");
         
-        do {
-            reintentar = getchar();
-        } while (reintentar == 10);
-    } while (reintentar == 's');
+        
+        reintentar = getche();
+        
+    } while (reintentar == 10);
     
     /*reiniciar colores*/
     printf (ESC"0m\n\n\n\n\n\n");
