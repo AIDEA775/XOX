@@ -119,12 +119,12 @@ tTabla abrirTabla(void) {
 
 /*imprimir de tabla de posiciones*/
 void imprimirTabla(char buffer[120]) {
-    printf("\n\n\n\t     TABLA DE POSICIONES:\n\n");
+    printf("\n\n\n\t      TABLA DE POSICIONES:\n\n");
     int lat = 0;
 
     /*imprimir desde el buffer*/
     while (lat < 120) {
-        printf("\t        ");
+        printf("\t         ");
         for (int col = 0; col < 12; col++) {
             printf("%c", buffer[lat]);
             lat++;
@@ -180,9 +180,9 @@ tTabla escribirTabla(tTabla tabla, int puntoMax, int tiempo) {
     if (record <= puntoMax) {
         encabezado();
         printf ("\n\n\n\n\n\t"
-                "       Y O U W I N ! !\n\n\t"
-                "         PUNTOS: %d\n\t"
-                "      MOVIMIENTOS: %d\n", puntoMax, tiempo);  
+                "       R E C O R D ! !\n\n\t"
+                "          PUNTOS: %d\n\t"
+                "       MOVIMIENTOS: %d\n", puntoMax, tiempo);  
 
         /*pedir y guardar un nombre con maximo 7 caracteres*/
         printf("\n\t     Tu nombre: ");

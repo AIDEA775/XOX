@@ -29,16 +29,16 @@ int main (void) {
     printf(RED);
     encabezado();
     printf ("\n\n\n\n\n\t"
-            "            Hey!!\n\n\t"
-            "      Quieres probarme?\n\n\n\t"
-            "    Para saber como jugar\n\t"
-            "         Presiona A\n\n\t"
-            "    Para empezar a jugar\n\t"
-            "       Presiona Enter! \n");
+            "             Hey!!\n\n\t"
+            "       Quieres probarme?\n\n\n\t"
+            "     Para saber como jugar\n\t"
+            "          Presiona A\n\n\t"
+            "     Para empezar a jugar\n\t"
+            "        Presiona Enter! \n");
     printf(ESC"%dB\t", 12);
-    printf ("      c := Mi Creador\n\t"
-            "    b := Respalar Tabla\n\t"
-            "    v := Restaurar Tabla\n");
+    printf ("       c := Mi Creador\n\t"
+            "      b := Respalar Tabla\n\t"
+            "     v := Restaurar Tabla\n");
     printf(ESC"%dA"ESC"%dC", 16, 31);
 
     do {
@@ -63,9 +63,9 @@ int main (void) {
         printf ("\n\n\n\t"
                 "       A que dificultad\n\t"
                 "        Quieres jugar?\n\n\t"
-                "          [*] Facil    \n\n\t"
-                "          [ ] Dificil  \n\n\t"
-                "          [ ] Imposible");
+           GREEN"            Facil\n\n\t"RED
+                "           Dificil\n\n\t"
+                "          Imposible");
         do {
         movimiento = getch();
         if (movimiento == 27) {
@@ -75,17 +75,17 @@ int main (void) {
                 case ARR:
                     switch (reintentar) {
                         case 'd':
-                            printf (ESC"4A"ESC"23D"ESC"0J");
-                            printf ("          [*] Facil    \n\n\t"
-                                    "          [ ] Dificil  \n\n\t"
-                                    "          [ ] Imposible");
+                            printf (ESC"4A"ESC"23D"ESC"0J\t");
+                            printf (GREEN"            Facil\n\n\t"RED
+                                         "           Dificil\n\n\t"
+                                         "          Imposible");
                             reintentar = 'f';
                             break;
                         case 'i':
-                            printf (ESC"4A"ESC"23D"ESC"0J");
-                            printf ("          [ ] Facil    \n\n\t"
-                                    "          [*] Dificil  \n\n\t"
-                                    "          [ ] Imposible");
+                            printf (ESC"4A"ESC"23D"ESC"0J\t");
+                            printf (    "            Facil\n\n\t"
+                                    CYAN"           Dificil\n\n\t"RED
+                                        "          Imposible");
                             reintentar = 'd';
                             break;
                     }
@@ -93,17 +93,17 @@ int main (void) {
                 case ABA:
                     switch (reintentar) {
                         case 'f':
-                            printf (ESC"4A"ESC"23D"ESC"0J");
-                            printf ("          [ ] Facil    \n\n\t"
-                                    "          [*] Dificil  \n\n\t"
-                                    "          [ ] Imposible");
+                            printf (ESC"4A"ESC"23D"ESC"0J\t");
+                            printf (    "            Facil\n\n\t"
+                                    CYAN"           Dificil\n\n\t"RED
+                                        "          Imposible");
                             reintentar = 'd';
                             break;
                         case 'd':
-                            printf (ESC"4A"ESC"23D"ESC"0J");
-                            printf ("          [ ] Facil    \n\n\t"
-                                    "          [ ] Dificil  \n\n\t"
-                                    "          [*] Imposible");
+                            printf (ESC"4A"ESC"23D"ESC"0J\t");
+                            printf (      "            Facil\n\n\t"
+                                          "           Dificil\n\n\t"
+                                    YELLOW"          Imposible"RED);
                             reintentar = 'i';
                             break;
                     }

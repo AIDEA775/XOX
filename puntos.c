@@ -38,7 +38,7 @@ void srPuntos(tPuntos puntos, tMapa mapa, direc jugador) {
                 break;
             case MUCH:
                 puntos->puntoActual += 10;
-                puntos->limpiar = 7; /*rand()%5+1;*/
+                puntos->limpiar = rand()%6+1;
                 switch (puntos->limpiar) {
                     case 1:
                         puntos->limpiarTiempo = C;
