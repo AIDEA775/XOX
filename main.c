@@ -3,7 +3,7 @@
 #include <time.h>
 
 #include "conio.h"
-#include "def.h"
+#include "def.h"   
 #include "jugador.h"
 #include "mapa.h"
 #include "mensaje.h"
@@ -17,7 +17,7 @@ int main (void) {
     tMensaje mensaje;
     tPuntos puntos;
     tTabla tabla;
-    char reintentar;
+    char menu;
     char movimiento;
     bool refrescar;
     int tiempo;
@@ -42,12 +42,12 @@ int main (void) {
     printf(ESC"%dA"ESC"%dC", 16, 31);
 
     do {
-        reintentar = getch();
-    } while (reintentar != 10 && reintentar != 'a' && reintentar != 'c' && reintentar != 'b' && reintentar != 'v');
+        menu = getch();
+    } while (menu != 10 && menu != 'a' && menu != 'c' && menu != 'b' && menu != 'v');
 
     printf(ESC"%dB", 20);
     tabla = abrirTabla();
-    comandos(tabla, reintentar);
+    comandos(tabla, menu);
     tabla = cerrarTabla(tabla);
 
     do {
@@ -56,7 +56,7 @@ int main (void) {
         puntos = crearPuntos();
         mensaje = crearMensaje();
         tiempo = 1;
-        reintentar = 'f';
+        menu = 'f';
         refrescar = true;
 
         encabezado();
@@ -73,38 +73,38 @@ int main (void) {
             movimiento = getch();
             switch (movimiento) {
                 case ARR:
-                    switch (reintentar) {
+                    switch (menu) {
                         case 'd':
                             printf (ESC"4A"ESC"23D"ESC"0J\t");
                             printf (GREEN"            Facil\n\n\t"RED
                                          "           Dificil\n\n\t"
                                          "          Imposible");
-                            reintentar = 'f';
+                            menu = 'f';
                             break;
                         case 'i':
                             printf (ESC"4A"ESC"23D"ESC"0J\t");
                             printf (    "            Facil\n\n\t"
                                     CYAN"           Dificil\n\n\t"RED
                                         "          Imposible");
-                            reintentar = 'd';
+                            menu = 'd';
                             break;
                     }
                     break;
                 case ABA:
-                    switch (reintentar) {
+                    switch (menu) {
                         case 'f':
                             printf (ESC"4A"ESC"23D"ESC"0J\t");
                             printf (    "            Facil\n\n\t"
                                     CYAN"           Dificil\n\n\t"RED
                                         "          Imposible");
-                            reintentar = 'd';
+                            menu = 'd';
                             break;
                         case 'd':
                             printf (ESC"4A"ESC"23D"ESC"0J\t");
                             printf (      "            Facil\n\n\t"
                                           "           Dificil\n\n\t"
                                     YELLOW"          Imposible"RED);
-                            reintentar = 'i';
+                            menu = 'i';
                             break;
                     }
                     break;
@@ -113,7 +113,7 @@ int main (void) {
         }
         while (movimiento != 10);
 
-        switch (reintentar) {
+        switch (menu) {
             case 'f':
                 cambiarDificultad(mapa, 1);
                 break;
@@ -127,14 +127,14 @@ int main (void) {
 
         encabezado();
         printf(ESC"10B\t\t    Listo?\n");
-        for (int i = 0; i < 180000000; i++);
+        for (int i = 0; i < 180000000; i++);    /*cambiar esto*/
         printf (ESC"1A\t\t    Bien! \n");
         for (int i = 0; i < 130000000; i++);
 
         do {
             encabezado();
             printf ("\t  Puntos: %d        Mov: %d\n", verPuntos(puntos), tiempo);
-            actualizarMensaje(mensaje, esLimpiador(puntos), verPuntos(puntos));
+            actualizarMensaje(mensaje, esLimpiador(puntos), verPuntoMax(puntos));
             imprimirMapa(mapa, mensaje);
 
             movimiento = getch();
@@ -190,9 +190,9 @@ int main (void) {
                 "       Presiona Enter! ");
         
         
-        reintentar = getche();
+        menu = getche();
         
-    } while (reintentar == 10);
+    } while (menu == 10);
     
     /*reiniciar colores*/
     printf (ESC"0m\n\n\n\n\n\n");
